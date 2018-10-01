@@ -31,11 +31,21 @@ Complete la tabla:
 
 | Integrante | github nick |
 |------------|-------------|
-|            |             |
+| Luis Felipe Epia Realpe           |  fffeelipe |
+| Santiago Orloff Orloff Rodríguez           |  Orloffyeah |
 
 ## Discusión
 
 Describa los resultados obtenidos. En el caso de anti-aliasing describir las técnicas exploradas, citando las referencias.
+
+Para rasterizar el triangulo, se usaron coordenadas baricentricas por su propiedad de mostrar el "peso" de cada vértice en cada punto del plano; con estos valores se hizo la interpretación de los valores para los colores.
+
+También tiene la propiedad de que si el punto objetivo no está dentro del triangulo, alguno de los pesos será mayor a 1 o menor que 0, que fue lo que se usó para determinar si cada punto estaba dentro del triangulo.
+En caso de estar dentro del triangulo, como la suma de las coordenadas baricentricas debe ser uno, se multiplicaba el valor de cada color con su respectiva coordenada y se sumaban, ello daba un promedio ponderado para el color.
+Para saber si el triangulo no estaba dentro del triangulo se elegía como punto objetivo el centro del "pixel" objetivo (se usaban números punto flotante para los cálculos).
+
+La implementación del anti-aliasing se basó en el método descrito en la página [Scratch a Pixel](https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/rasterization-practical-implementation), el cuál fué sugerido por el profesor.
+En este artículo se explica como el proceso de anti-aliasing consiste en tomar una sección del borde de la figura y dividr cada pixel en varios sub-pixeles, a los cuales se les realiza una revisión del color. Posteriormente se toma el promedio de colores y se aplica al pixel original, resultando en un borde mas gradual y "suave",
 
 ## Entrega
 
